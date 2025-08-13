@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ff6fb1" />
+    <title>LoveFuel – Made by a Single 😉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="intro-overlay" id="introOverlay" aria-modal="true" role="dialog">
+      <div class="intro-inner" id="introInner">
+        <div class="intro-screen" id="introScreen1">
+          <div class="intro-hi">Hiii</div>
+          <div class="intro-sub">I play hard to get. Catch me if you can.</div>
+          <div id="teaseText" class="tease-text">Try tapping the arrow…</div>
+          <button class="intro-arrow" id="introArrow" aria-label="Next">➡️</button>
+        </div>
+        <div class="intro-screen" id="introScreen2" hidden>
+          <div class="intro-ready" style="margin-bottom:8px">Let’s get you set up 😉</div>
+          <div class="intro-sub">Select your gender (purely for vibes)</div>
+          <div class="gender-chips" id="genderChips">
+            <button class="chip gender" data-value="woman">Woman</button>
+            <button class="chip gender" data-value="man">Man</button>
+            <button class="chip gender" data-value="nosay">Prefer not to say</button>
+          </div>
+          <div class="quiz-actions" style="justify-content:center">
+            <button class="btn primary" id="genderNext" disabled>Next ➡️</button>
+          </div>
+        </div>
+
+        <div class="intro-screen" id="introScreen3" hidden>
+          <div class="intro-ready" style="margin-bottom:8px">What's your current status? 💕</div>
+          <div class="intro-sub">Be honest, we won't judge (much) 😉</div>
+          <div class="gender-chips" id="statusChips">
+            <button class="chip status" data-value="single">Single</button>
+            <button class="chip status" data-value="committed">Committed</button>
+          </div>
+          <div class="quiz-actions" style="justify-content:center">
+            <button class="btn primary" id="statusNext" disabled>Next ➡️</button>
+          </div>
+        </div>
+        
+        <div class="intro-screen" id="singleScreen" hidden>
+          <div class="intro-ready" style="margin-bottom:8px">You're lucky! 🍀</div>
+          <div class="intro-sub">Go out there and enjoy your freedom! The world is your oyster, and you're the pearl. ✨</div>
+          <div class="intro-sub" style="margin-top:12px">Would you like to find out your ideal type? 💕</div>
+          <div class="quiz-actions" style="justify-content:center; gap:10px">
+            <button class="btn primary" id="singleNext">Continue to LoveFuel ❤️</button>
+            <button class="btn ghost" id="findIdealType">Find My Ideal Type 👀</button>
+          </div>
+        </div>
+        
+        <div class="intro-screen" id="finalScreen" hidden>
+          <div class="intro-ready">Your'e just in theee right place! ✨</div>
+          <button class="btn primary intro-start" id="introStart">Start ❤️</button>
+        </div>
+        
+        <div class="intro-screen" id="roastScreen" hidden>
+          <div class="intro-ready" style="margin-bottom:8px">Oh really? 🤨</div>
+          <div class="intro-sub" id="roastMessage">If you can't even decide on your gender, how are you supposed to decide on a girlfriend? 🤔</div>
+          <div class="quiz-actions" style="justify-content:center">
+            <button class="btn primary" id="roastExit">Exit App 🚪</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-ornaments" aria-hidden="true"></div>
+
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">💘⛽️</span>
+        <h1 class="title">LoveFuel <span class="made-by">– Made by a Single 😉</span></h1>
+      </div>
+      <div class="streak" id="streak" title="Daily streak">
+        🔥 <span id="streakCount">0</span> day streak
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="who-row" aria-label="Players">
+        <div class="field">
+          <label for="youName">You</label>
+          <input id="youName" type="text" placeholder="Your name (optional)" />
+        </div>
+        <div class="field">
+          <label for="partnerName">Partner</label>
+          <input id="partnerName" type="text" placeholder="Their name (optional)" />
+        </div>
+        <label class="solo-toggle">
+          <input id="soloMode" type="checkbox" />
+          <span>Solo mode</span>
+        </label>
+      </section>
+
+      <section class="filters" aria-label="Categories">
+        <div class="chips" id="categoryChips">
+          <!-- Chips created by JS for consistency -->
+        </div>
+        <label class="surprise">
+          <input type="checkbox" id="surpriseMix" />
+          <span>🎁 Surprise mix</span>
+        </label>
+      </section>
+
+      <section class="card rating-card" aria-live="polite">
+        <div class="rating-header">
+          <div class="rating-title">Rate Your Partner 💕</div>
+          <div class="rating-sub">Be honest, we won't tell them (probably) 😉</div>
+        </div>
+        <div class="rating-grid" id="ratingGrid">
+          <!-- Rating sliders will be created by JS -->
+        </div>
+        <div class="rating-actions">
+          <button class="btn primary" id="ratingSubmit">Get My Spark ✨</button>
+        </div>
+      </section>
+
+      <section class="card spark-card" aria-live="polite" aria-atomic="true" hidden>
+        <div class="spark-label">Conversation spark</div>
+        <div class="spark-text" id="sparkText">Tap “Give me a spark” to ignite the convo 🔥</div>
+        <div class="spark-meta">
+          <span id="sparkCategory">—</span>
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="sparkBtn">Give me a spark ✨</button>
+          <button class="btn ghost" id="anotherBtn" title="New spark">Another one 🔁</button>
+          <button class="btn meter" id="meterBtn" title="Show LoveFuel meter">We answered! ⚡</button>
+        </div>
+      </section>
+
+      <section class="card meter-card" aria-live="polite">
+        <div class="meter-top">
+          <div class="meter-label">Love Fuel Meter</div>
+          <div class="meter-value" id="meterValue">—%</div>
+        </div>
+        <div class="meter-bar">
+          <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+        </div>
+        <div class="meter-note">Non-scientific. Very dramatic.</div>
+      </section>
+
+      <section class="card pastlife-card">
+        <div class="pastlife-header">
+          <div class="pl-title">Past Life Detector 🔮</div>
+          <div class="pl-sub">Upload a selfie. We'll wildly guess your past life.</div>
+        </div>
+        <div class="pl-grid">
+          <div class="pl-upload">
+            <input type="file" id="plInput" accept="image/*" />
+            <button class="btn" id="plBtn">Detect my past life ✨</button>
+            <div class="pl-hint">No data leaves your device. Pinky promise.</div>
+          </div>
+          <div class="pl-preview">
+            <img id="plPreview" alt="Selfie preview" />
+            <div class="pl-result" id="plResult">Waiting for your gorgeous face...</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card quiz-card" id="soloQuiz" hidden>
+        <div class="quiz-head">
+          <div class="quiz-title">Who is your ideal type? 💞</div>
+          <div class="quiz-sub">Solo mode bonus. Be honest. We’ll tease you anyway.</div>
+        </div>
+        <div id="quizContainer"></div>
+        <div class="quiz-actions">
+          <button class="btn primary" id="quizSubmit" disabled>Reveal my type 👀</button>
+          <button class="btn ghost" id="quizReset" hidden>Try again 🔄</button>
+        </div>
+        <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Finally… someone as single as the creator. 🥲</div>
+
+    <footer class="app-footer">
+      <span>Built for laughs, not science. Be kind, flirt often, roast responsibly. 🧪💕</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+

@@ -1,0 +1,14 @@
+{
+  "name": "lovefuel",
+  "private": true,
+  "version": "1.0.0",
+  "description": "LoveFuel – Made by a Single 😉",
+  "scripts": {
+    "dev": "npx vite project --host --open",
+    "preview": "vite preview --host"
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
+  }
+}
+
