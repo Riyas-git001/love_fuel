@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "description": "LoveFuel – Made by a Single 😉",
   "scripts": {
-    "dev": "npx vite project --host --open",
-    "preview": "vite preview --host"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "vite": "^5.4.19"
